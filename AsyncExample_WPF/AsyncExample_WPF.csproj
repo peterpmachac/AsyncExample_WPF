@@ -7,4 +7,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AsyncExample_Lib\AsyncExample_Lib.csproj" />
+  </ItemGroup>
+
 </Project>

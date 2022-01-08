@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncExample_WPF", "AsyncExample_WPF\AsyncExample_WPF.csproj", "{447923FF-1946-45E6-ADC7-A4E1E75B7EF6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{02A1B068-5C4A-472E-85A6-6D3D9937DC7A} = {02A1B068-5C4A-472E-85A6-6D3D9937DC7A}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncExample_Lib", "AsyncExample_Lib\AsyncExample_Lib.csproj", "{02A1B068-5C4A-472E-85A6-6D3D9937DC7A}"
 EndProject

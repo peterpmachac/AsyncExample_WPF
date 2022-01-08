@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -19,6 +22,7 @@ namespace AsyncExample_WPF
 
         private void executeSync_Click(object sender, RoutedEventArgs e)
         {
+            resultsWindow.Clear();
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
             RunDownloadSync();
@@ -31,6 +35,7 @@ namespace AsyncExample_WPF
 
         private async void executeAsync_Click(object sender, RoutedEventArgs e)
         {
+            resultsWindow.Clear();
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
             await RunDownloadParallelAsync();
@@ -43,18 +48,7 @@ namespace AsyncExample_WPF
 
         private List<string> PrepData()
         {
-            List<string> output = new List<string>();
-
-            resultsWindow.Text = "";
-
-            output.Add("https://www.yahoo.com");
-            output.Add("https://www.google.com");
-            output.Add("https://www.microsoft.com");
-            output.Add("https://www.cnn.com");
-            output.Add("https://www.codeproject.com");
-            output.Add("https://www.stackoverflow.com");
-
-            return output;
+            return AsyncExample_Lib.FileHandler.GetUrls(ConfigurationManager.AppSettings.Get("url_file_path").ToString());
         }
 
         private async Task RunDownloadAsync()
@@ -102,9 +96,9 @@ namespace AsyncExample_WPF
             WebsiteDataModel output = new WebsiteDataModel();
             WebClient client = new WebClient();
 
+
             output.WebsiteUrl = websiteURL;
             output.WebsiteData = client.DownloadString(websiteURL);
-
             return output;
         }
 
